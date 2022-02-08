@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="txt_view_confirm_choice">Подтвердите ваш выбор</string>
 
+    <!--  Nav Labels  -->
+    <string name="nav_manufacturers">Производители</string>
+    <string name="nav_autos">Автомобили</string>
+    <string name="nav_years">Выберите год</string>
+    <string name="nav_confirm">Подтвердите ваш выбор</string>
+
+    <string name="btn_retry">Повторить</string>
+
+    <!-- ConfirmChoiceFragment -->
+    <string name="txt_view_confirm_choice">Подтвердите ваш выбор</string>
     <string name="txt_selected_manufacturer">Производитель: %s</string>
     <string name="txt_selected_auto">Автомобиль: %s</string>
     <string name="txt_selected_year">Год: %s</string>
     <string name="btn_confirm_choice">Подтвердить</string>
     <string name="confirm_success">Ваша заявка была принята</string>
+
+    <!-- Errors   -->
+    <string name="error_no_internet_connection">Нет соединения с интернетом</string>
+    <string name="error_timeout">Время ожидания ответа истекло</string>
+    <string name="error_401">Пользователь не авторизован</string>
+    <string name="error_403">Доступ запрещен</string>
+    <string name="error_unknown">Произошла неизвестная ошибка</string>
+
+
 </resources>

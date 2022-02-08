@@ -9,7 +9,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.personalauto.R
 import com.example.personalauto.databinding.FragmentConfirmSelectBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ConfirmSelectFragment : Fragment(R.layout.fragment_confirm_select) {
 
     private var _binding: FragmentConfirmSelectBinding? = null

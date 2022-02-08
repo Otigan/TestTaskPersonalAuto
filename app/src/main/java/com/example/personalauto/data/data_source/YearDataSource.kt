@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class YearDataSource @Inject constructor(private val api: PersonalAutoApi) {
 
-    suspend fun getYear(id: Int, name: String) = api.getYear(id, name)
+    suspend fun getYears(id: Int, name: String) = api.getYears(id, name)
 
 }

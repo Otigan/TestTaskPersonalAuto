@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/manufacturerFragment"
         android:name="com.example.personalauto.ui.ManufacturerFragment"
-        android:label="fragment_manufacturer"
-        tools:layout="@layout/fragment_manufacturer" >
+        android:label="@string/nav_manufacturers"
+        tools:layout="@layout/fragment_manufacturer">
         <action
             android:id="@+id/action_manufacturerFragment_to_autoFragment"
             app:destination="@id/autoFragment" />
@@ -17,8 +17,8 @@
     <fragment
         android:id="@+id/autoFragment"
         android:name="com.example.personalauto.ui.AutoFragment"
-        android:label="fragment_auto"
-        tools:layout="@layout/fragment_auto" >
+        android:label="@string/nav_autos"
+        tools:layout="@layout/fragment_auto">
         <argument
             android:name="manufacturer"
             app:argType="com.example.personalauto.data.model.Manufacturer" />
@@ -29,8 +29,8 @@
     <fragment
         android:id="@+id/yearFragment"
         android:name="com.example.personalauto.ui.YearFragment"
-        android:label="fragment_year"
-        tools:layout="@layout/fragment_year" >
+        android:label="@string/nav_years"
+        tools:layout="@layout/fragment_year">
         <argument
             android:name="manufacturer"
             app:argType="com.example.personalauto.data.model.Manufacturer" />
@@ -44,8 +44,8 @@
     <fragment
         android:id="@+id/confirmSelectFragment"
         android:name="com.example.personalauto.ui.ConfirmSelectFragment"
-        android:label="fragment_confirm_select"
-        tools:layout="@layout/fragment_confirm_select" >
+        android:label="@string/nav_confirm"
+        tools:layout="@layout/fragment_confirm_select">
         <argument
             android:name="auto"
             app:argType="com.example.personalauto.data.model.Auto" />

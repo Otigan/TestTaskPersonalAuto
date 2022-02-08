@@ -11,7 +11,7 @@ interface PersonalAutoApi {
 
 
     companion object {
-        const val BASE_URL = "baseurl.com/"
+        const val BASE_URL = "https://baseurl.com/"
     }
 
     @GET("manufacturers")
@@ -28,7 +28,7 @@ interface PersonalAutoApi {
     ): Autos
 
     @GET("year/{manufacturer_id}/{name}")
-    suspend fun getYear(
+    suspend fun getYears(
         @Path(value = "manufacturer_id", encoded = false) manufacturer_id: Int,
         @Path(value = "name", encoded = false) name: String
     ): Years

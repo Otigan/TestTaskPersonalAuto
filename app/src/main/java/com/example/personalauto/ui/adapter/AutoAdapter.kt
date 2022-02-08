@@ -29,6 +29,9 @@ class AutoAdapter(private val onClick: (auto: Auto) -> Unit) :
 
         fun bind(auto: Auto) {
             binding.apply {
+                root.setOnClickListener {
+                    onClick(auto)
+                }
                 autoName.text = auto.name
             }
         }

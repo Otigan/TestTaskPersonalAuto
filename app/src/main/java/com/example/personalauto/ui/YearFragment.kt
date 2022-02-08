@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -17,12 +18,14 @@ import com.example.personalauto.data.model.Manufacturer
 import com.example.personalauto.data.model.Year
 import com.example.personalauto.databinding.FragmentYearBinding
 import com.example.personalauto.presentation.YearViewModel
+import com.example.personalauto.presentation.util.YearEvent
 import com.example.personalauto.ui.adapter.YearAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class YearFragment : Fragment(R.layout.fragment_year) {
-
 
     private var _binding: FragmentYearBinding? = null
     private val binding get() = _binding!!
@@ -48,15 +51,11 @@ class YearFragment : Fragment(R.layout.fragment_year) {
             navigateToFinalScreen(manufacturer, auto, it)
         })
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                yearViewModel.getYear(manufacturer.id, auto.name).collectLatest {
-                    yearAdapter.submitList(it)
-                }
-            }
-        }
-
         binding.apply {
+            btnRetry.setOnClickListener {
+                yearViewModel.getYears(manufacturer.id, auto.name)
+                yearAdapter.notifyDataSetChanged()
+            }
             txtSelectedManufacturer.text =
                 getString(R.string.txt_selected_manufacturer, manufacturer)
 
@@ -65,6 +64,45 @@ class YearFragment : Fragment(R.layout.fragment_year) {
             recyclerView.apply {
                 setHasFixedSize(true)
                 adapter = yearAdapter
+            }
+        }
+
+        yearViewModel.getYears(manufacturer.id, auto.name)
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                yearViewModel.yearsEventFlow.collectLatest { event ->
+                    when (event) {
+                        is YearEvent.Error -> {
+                            binding.apply {
+                                progressBar.isVisible = false
+                                recyclerView.isVisible = false
+                                btnRetry.isVisible = true
+                                txtViewError.apply {
+                                    isVisible = true
+                                    text = event.message
+                                }
+                            }
+                        }
+                        is YearEvent.Loading -> {
+                            binding.apply {
+                                progressBar.isVisible = true
+                                recyclerView.isVisible = false
+                                btnRetry.isVisible = false
+                                txtViewError.isVisible = false
+                            }
+                        }
+                        is YearEvent.Success -> {
+                            binding.apply {
+                                progressBar.isVisible = false
+                                recyclerView.isVisible = true
+                                btnRetry.isVisible = false
+                                txtViewError.isVisible = false
+                                yearAdapter.submitList(event.years)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
