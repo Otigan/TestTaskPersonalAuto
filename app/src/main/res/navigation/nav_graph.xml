@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/manufacturerFragment">
+
+    <fragment
+        android:id="@+id/manufacturerFragment"
+        android:name="com.example.personalauto.ui.ManufacturerFragment"
+        android:label="fragment_manufacturer"
+        tools:layout="@layout/fragment_manufacturer" >
+        <action
+            android:id="@+id/action_manufacturerFragment_to_autoFragment"
+            app:destination="@id/autoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/autoFragment"
+        android:name="com.example.personalauto.ui.AutoFragment"
+        android:label="fragment_auto"
+        tools:layout="@layout/fragment_auto" >
+        <argument
+            android:name="manufacturer"
+            app:argType="com.example.personalauto.data.model.Manufacturer" />
+        <action
+            android:id="@+id/action_autoFragment_to_yearFragment"
+            app:destination="@id/yearFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yearFragment"
+        android:name="com.example.personalauto.ui.YearFragment"
+        android:label="fragment_year"
+        tools:layout="@layout/fragment_year" >
+        <argument
+            android:name="manufacturer"
+            app:argType="com.example.personalauto.data.model.Manufacturer" />
+        <argument
+            android:name="auto"
+            app:argType="com.example.personalauto.data.model.Auto" />
+    </fragment>
+</navigation>
