@@ -1,3 +1,7 @@
 package com.example.personalauto.data.model
 
-data class Year(val id: Int, val year: String)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Year(val id: Int, val year: String): Parcelable

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">PersonalAuto</string>
+    <string name="app_name" translatable="false">PersonalAuto</string>
+
+    <string name="txt_view_confirm_choice">Confirm your choice</string>
+    <string name="txt_selected_manufacturer">Manufacturer: %s</string>
+    <string name="txt_selected_auto">Auto: %s</string>
+    <string name="txt_selected_year">Year: %s</string>
+    <string name="btn_confirm_choice">Confirm</string>
+    <string name="confirm_success">Your application has been accepted</string>
 </resources>

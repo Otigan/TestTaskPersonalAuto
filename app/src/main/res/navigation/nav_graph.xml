@@ -37,5 +37,23 @@
         <argument
             android:name="auto"
             app:argType="com.example.personalauto.data.model.Auto" />
+        <action
+            android:id="@+id/action_yearFragment_to_confirmSelectFragment"
+            app:destination="@id/confirmSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmSelectFragment"
+        android:name="com.example.personalauto.ui.ConfirmSelectFragment"
+        android:label="fragment_confirm_select"
+        tools:layout="@layout/fragment_confirm_select" >
+        <argument
+            android:name="auto"
+            app:argType="com.example.personalauto.data.model.Auto" />
+        <argument
+            android:name="manufacturer"
+            app:argType="com.example.personalauto.data.model.Manufacturer" />
+        <argument
+            android:name="year"
+            app:argType="com.example.personalauto.data.model.Year" />
     </fragment>
 </navigation>

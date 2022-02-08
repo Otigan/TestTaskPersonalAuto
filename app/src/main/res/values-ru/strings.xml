@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="txt_view_confirm_choice">Подтвердите ваш выбор</string>
+
+    <string name="txt_selected_manufacturer">Производитель: %s</string>
+    <string name="txt_selected_auto">Автомобиль: %s</string>
+    <string name="txt_selected_year">Год: %s</string>
+    <string name="btn_confirm_choice">Подтвердить</string>
+    <string name="confirm_success">Ваша заявка была принята</string>
+</resources>

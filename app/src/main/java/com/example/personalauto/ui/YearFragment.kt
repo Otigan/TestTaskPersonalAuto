@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.personalauto.R
 import com.example.personalauto.data.model.Auto
@@ -34,7 +35,7 @@ class YearFragment : Fragment(R.layout.fragment_year) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentYearBinding.inflate(inflater)
-        return binding.root
+        return _binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,8 +48,6 @@ class YearFragment : Fragment(R.layout.fragment_year) {
             navigateToFinalScreen(manufacturer, auto, it)
         })
 
-
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 yearViewModel.getYear(manufacturer.id, auto.name).collectLatest {
@@ -58,6 +57,11 @@ class YearFragment : Fragment(R.layout.fragment_year) {
         }
 
         binding.apply {
+            txtSelectedManufacturer.text =
+                getString(R.string.txt_selected_manufacturer, manufacturer)
+
+            txtSelectedAuto.text = getString(R.string.txt_selected_auto, auto)
+
             recyclerView.apply {
                 setHasFixedSize(true)
                 adapter = yearAdapter
@@ -70,7 +74,12 @@ class YearFragment : Fragment(R.layout.fragment_year) {
         _binding = null
     }
 
-    fun navigateToFinalScreen(manufacturer: Manufacturer, auto: Auto, year: Year) {
-
+    private fun navigateToFinalScreen(manufacturer: Manufacturer, auto: Auto, year: Year) {
+        val action = YearFragmentDirections.actionYearFragmentToConfirmSelectFragment(
+            auto,
+            manufacturer,
+            year
+        )
+        findNavController().navigate(action)
     }
 }

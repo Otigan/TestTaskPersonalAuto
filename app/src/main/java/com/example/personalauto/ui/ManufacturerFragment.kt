@@ -30,7 +30,7 @@ class ManufacturerFragment : Fragment(R.layout.fragment_manufacturer) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentManufacturerBinding.inflate(inflater)
-        return binding.root
+        return _binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

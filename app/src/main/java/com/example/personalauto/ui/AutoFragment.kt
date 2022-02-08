@@ -46,6 +46,9 @@ class AutoFragment : Fragment(R.layout.fragment_auto) {
         })
 
         binding.apply {
+            txtSelectedManufacturer.text =
+                getString(R.string.txt_selected_manufacturer, manufacturer
+                )
             recyclerView.apply {
                 setHasFixedSize(true)
                 adapter = autoAdapter
